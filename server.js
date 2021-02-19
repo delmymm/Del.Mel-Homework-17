@@ -7,17 +7,22 @@ const PORT = process.env.PORT || 3001;
 
 app.use(logger("dev"));
 
-require("./routes/html")(app);
-require("./routes/api")(app);
+require("./routes/home")(app);
+require("./routes")(app);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/workout", 
+{ 
   useNewUrlParser: true,
-  useFindAndModify: false
-});
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+}).then(() => console.log('Connected to db'))
+.catch(err=> console.error('An error occured', err));
 
 app.listen(PORT, function () {
     console.log('App listening on PORT: ' + PORT);
