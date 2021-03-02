@@ -7,8 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(logger("dev"));
 
-require("./routes/home")(app);
-require("./routes")(app);
+app.use(require("./routes/home"))
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
