@@ -8,7 +8,7 @@
 [Contributors](#Contributors)  
 
 ## Description
-* This app is used to sort through all company employees. They are listed by Roles, Departments, and Employees.
+* This app is used to track daily fitness.
 
 ## Installation
 * No installations needed.
